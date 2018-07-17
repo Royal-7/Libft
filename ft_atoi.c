@@ -6,49 +6,35 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 13:04:00 by abao              #+#    #+#             */
-/*   Updated: 2018/07/13 16:25:10 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/17 12:52:53 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	is_blank(char *x)
+int	ft_atoi(char *str)
 {
-	int a;
+	int				i;
+	long long int	result;
+	long long int	neg;
 
-	a = 0;
-	while (x[a] != '\0')
+	i = 0;
+	neg = 1;
+	result = 0;
+	while (str[i] == 32 || str[i] == 10 || str[i] == 9 || str[i] == 12 ||
+			str[i] == 13 || str[i] == 11)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		while (x[a] == '\t' || x[a] == '\n' || x[a] == '\v' || x[a] == '\f')
-			a++;
-		while (x[a] == '+' || x[a] == '\r' || x[a] == ' ')
-			a++;
+		if (str[i] == '-')
+			neg = -1;
+		i++;
 	}
-	return (a);
-}
-
-int			ft_atoi(char *str)
-{
-	int	c;
-	int	negative;
-	int	final;
-
-	c = 0;
-	final = 0;
-	c = is_blank(str);
-	if (str[c] == '-')
+	while (str[i])
 	{
-		negative = 1;
-		c++;
+		if (str[i] < 48 || 57 < str[i])
+			return (result * neg);
+		else
+			result = (result * 10) + (long long int)(str[i] - '0');
+		i++;
 	}
-	else
-		negative = 0;
-	while (str[c] != '\0' && (str[c] >= '0' && str[c] <= '9'))
-	{
-		final = final + (str[c] - '0');
-		if (str[c + 1] != '\0' && str[c + 1] >= '0' && str[c + 1] <= '9')
-			final = final * 10;
-		c++;
-	}
-	if (negative == 1)
-		return (-final);
-	return (final);
+	return (result * neg);
 }

@@ -6,26 +6,23 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 13:10:30 by abao              #+#    #+#             */
-/*   Updated: 2018/07/09 13:14:42 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/16 19:36:11 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <string.h>
+#include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	int i;
+	size_t	len;
+	size_t	len2;
+	int		result;
 
-	i = 0;
-	while (s1[i] == s2[i])
-	{
-		if (s1[i] == '\0' && s2[i] == '\0')
-			return (0);
-		i++;
-	}
-	if (s1[i] > s1[i])
-		return (s2[i] - s1[i]);
-	else
-		return (s1[i] - s2[i]);
+	len = ft_strlen(s1) + 1;
+	len2 = ft_strlen(s2) + 1;
+	len = (len <= len2) ? len : len2;
+	result = ft_memcmp(s1, s2, len);
+	return (result);
 }

@@ -6,21 +6,29 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 11:10:58 by abao              #+#    #+#             */
-/*   Updated: 2018/07/11 11:47:29 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/16 15:07:59 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, char *source, size_t len)
+#include "libft.h"
+
+char	*ft_strncpy(char *dest, const char *source, size_t len)
 {
 	int	count;
 
 	count = 0;
-	while ((dest[count] != '\0') && (src[count] != '\0') && count < len)
+	while ((source[count] != '\0') && count < (int)len)
 	{
-		dest[count] = src[count];
+		dest[count] = source[count];
 		count++;
 	}
-	if (src[count] == '\0')
-		dest[count] = '\0';
+	if (source[count] == '\0')
+	{
+		while (count < (int)len)
+		{
+			dest[count] = '\0';
+			count++;
+		}
+	}
 	return (dest);
 }

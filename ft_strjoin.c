@@ -6,9 +6,12 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 16:16:35 by abao              #+#    #+#             */
-/*   Updated: 2018/07/12 16:29:30 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/17 13:53:02 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -33,5 +36,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		str[x + y] = s2[y];
 		y++;
 	}
+	str[x + y] = '\0';
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 10:41:11 by abao              #+#    #+#             */
-/*   Updated: 2018/07/13 10:48:47 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/17 15:58:47 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char			*ft_strdup(const char *s1);
 char			*ft_strcpy(char *s1, const char *s2);
 char			*ft_strncpy(char *s1, const char *s2, size_t n);
 char			*ft_strcat(char *s1, const char *s2);
-char			*ft_strncat(char *s1, const char *s2, size_t n);
+char			*ft_strncat(char *str1, const char *str2, size_t n);
 size_t			ft_strlcat(char	*dst, const char *src, size_t size);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
@@ -70,7 +70,7 @@ char			*ft_strsub(char const *s, unsigned int start, size_t len);
 char			*ft_strjoin(char const *s1, char const *s2);
 char			*ft_strjoinfree(char *s1, char *s2);
 char			*ft_strtrim(char const *s);
-char			**ft_strsplit(char const *s, char *splitchars);
+char			**ft_strsplit(char const *s, char splitchars);
 char			*ft_itoa(int n);
 void			ft_putchar(char c);
 void			ft_putstr(char const *s);
@@ -86,7 +86,6 @@ void			ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void			ft_lstadd(t_list **alst, t_list *new);
 void			ft_lstiter(t_list *lst, void (*f)(t_list *elem));
-int				get_next_line(int const fd, char **line);
-int				ft_printf(const char *format, ...);
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 #endif

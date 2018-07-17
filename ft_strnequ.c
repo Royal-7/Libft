@@ -6,13 +6,15 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 14:38:51 by abao              #+#    #+#             */
-/*   Updated: 2018/07/12 15:14:24 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/17 13:27:16 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strnequ(char const *str1, char const *s2, size_t n)
+#include "libft.h"
+
+int	ft_strnequ(char const *str1, char const *str2, size_t n)
 {
 	if (ft_strncmp(str1, str2, n) != 0)
-		return (1);
-	return (0);
+		return (0);
+	return (1);
 }

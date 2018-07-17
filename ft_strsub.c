@@ -6,9 +6,12 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 15:14:57 by abao              #+#    #+#             */
-/*   Updated: 2018/07/12 15:59:19 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/15 18:13:47 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
@@ -21,7 +24,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	if (substr == NULL)
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while (i < (int)len)
 	{
 		substr[i] = s[start + i];
 		i++;

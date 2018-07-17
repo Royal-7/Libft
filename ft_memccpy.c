@@ -6,22 +6,27 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 16:16:57 by abao              #+#    #+#             */
-/*   Updated: 2018/07/13 11:30:22 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/16 13:29:47 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_memccpy(void *str1, const void *str2, int c, size_t n)
-{
-	int		x;
-	char	*change;
-	char	*source;
+#include "libft.h"
 
-	change = (char *)str1;
-	source = (char *)str2;
-	x = 0;
-	while (x < n && source[x] != c)
+void	*ft_memccpy(void *str1, const void *str2, int c, size_t n)
+{
+	size_t			i;
+	unsigned char	*source;
+	unsigned char	*desti;
+
+	i = 0;
+	source = (unsigned char *)str2;
+	desti = (unsigned char *)str1;
+	while (i < n)
 	{
-		change[x] = source[x];
-		x++;
+		desti[i] = source[i];
+		if (source[i] == (unsigned char)c)
+			return (desti + i + 1);
+		i++;
 	}
+	return (NULL);
 }

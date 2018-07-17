@@ -6,11 +6,13 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/11 10:15:14 by abao              #+#    #+#             */
-/*   Updated: 2018/07/11 10:21:31 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/16 14:18:07 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *str1, char *str2, size_t n)
+#include "libft.h"
+
+char	*ft_strncat(char *str1, char const *str2, size_t n)
 {
 	int	x;
 	int	y;
@@ -19,10 +21,11 @@ char	*ft_strncat(char *str1, char *str2, size_t n)
 	y = 0;
 	while (str1[x] != '\0')
 		x++;
-	while (str2[y] != '\0' && y < n)
+	while (str2[y] != '\0' && y < (int)n)
 	{
 		str1[x + y] = str2[y];
 		y++;
 	}
+	str1[x + y] = '\0';
 	return (str1);
 }

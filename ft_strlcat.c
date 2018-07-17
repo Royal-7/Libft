@@ -6,7 +6,7 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 10:43:05 by abao              #+#    #+#             */
-/*   Updated: 2018/07/13 10:47:34 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/16 19:32:48 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,21 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	i;
-	size_t	s1_end;
+	char	*cur;
+	char	*reader;
+	size_t	len;
 
-	i = 0;
-	while (dst[i] && i < size)
-		i++;
-	s1_end = i;
-	while (src[i - s1_end] && i < size - 1)
+	cur = (char *)ft_memchr(dst, '\0', size);
+	if (cur == NULL)
+		return (size + ft_strlen(src));
+	reader = (char *)src;
+	len = (size_t)(cur - dst) + ft_strlen(reader);
+	while ((size_t)(cur - dst) < size - 1 && *reader != '\0')
 	{
-		dst[i] = src[i - s1_end];
-		i++;
+		*cur = *reader;
+		cur++;
+		reader++;
 	}
-	if (s1_end < size)
-		dst[i] = '\0';
-	return (s1_end + ft_strlen(src));
+	*cur = '\0';
+	return (len);
 }

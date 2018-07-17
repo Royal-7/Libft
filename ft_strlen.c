@@ -6,21 +6,18 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/09 13:21:41 by abao              #+#    #+#             */
-/*   Updated: 2018/07/13 10:48:20 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/16 12:16:16 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {
 	int	x;
-	int	count;
 
 	x = 0;
-	count = 1;
 	while (str[x] != '\0')
-	{
 		x++;
-		count++;
-	}
-	return (count);
+	return (x);
 }

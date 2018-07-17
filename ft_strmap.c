@@ -6,9 +6,12 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 10:45:27 by abao              #+#    #+#             */
-/*   Updated: 2018/07/12 12:26:47 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/15 17:56:02 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {

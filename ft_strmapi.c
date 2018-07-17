@@ -6,9 +6,12 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 14:06:21 by abao              #+#    #+#             */
-/*   Updated: 2018/07/12 14:24:29 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/15 17:56:29 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
+#include <stdlib.h>
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {

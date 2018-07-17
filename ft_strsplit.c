@@ -6,78 +6,77 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/12 17:58:35 by abao              #+#    #+#             */
-/*   Updated: 2018/07/13 11:12:55 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/17 14:37:31 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static int		isin(char c, char *str)
+static const char	*ft_str_find_next(const char *str, char c, int skip)
 {
-	while (*str)
-	{
-		if (c == *str)
-			return (1);
-		str++;
-	}
-	return (0);
+	if (skip)
+		while (*str != '\0' && *str == c)
+			str++;
+	else
+		while (*str != '\0' && *str != c)
+			str++;
+	return (str);
 }
 
-static char		*ft_extract_word(char *s, char *splitchars)
+static int			ft_str_splits(const char *str, char seps)
 {
-	int		len;
-	char	*word;
+	int i;
 
-	len = 0;
-	while (!isin(s[len], splitchars) && s[len] != '\0')
-		len++;
-	word = (char*)malloc(sizeof(char) * (len + 1));
-	word[len] = '\0';
-	while (len--)
-		word[len] = s[len];
-	return (word);
-}
-
-static char		**ft_add_word_to_table(char *word, char **table)
-{
-	int		i;
-	char	**tmptable;
-
-	tmptable = (char**)malloc(sizeof(char*) * (ft_strvlen(table) + 2));
 	i = 0;
-	while (table != NULL && table[i] != NULL)
+	while (*str != '\0')
 	{
-		tmptable[i] = table[i];
-		i++;
-	}
-	tmptable[i] = word;
-	tmptable[i + 1] = NULL;
-	if (table != NULL)
-		free(table);
-	return (tmptable);
-}
-
-char			**ft_strsplit(char const *s, char *splitchars)
-{
-	int		i;
-	char	**table;
-	char	*word;
-
-	if (s == NULL)
-		return (NULL);
-	table = NULL;
-	i = 0;
-	while (s[i])
-	{
-		if (!isin(s[i], splitchars) && (i == 0 || isin(s[i - 1], splitchars)))
+		str = ft_str_find_next(str, seps, 1);
+		if (*str != '\0')
 		{
-			word = ft_extract_word((char*)(s + i), splitchars);
-			table = ft_add_word_to_table(word, table);
+			i++;
+			str = ft_str_find_next(str, seps, 0);
 		}
-		i++;
 	}
-	if (table == NULL)
-		return (ft_add_word_to_table(NULL, table));
-	return (table);
+	return (i);
+}
+
+static char			**ft_table_del(char **ret, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len)
+		free(ret[i]);
+	free(ret);
+	return (NULL);
+}
+
+char				**ft_strsplit(char const *str, char c)
+{
+	char		**ret;
+	int			i;
+	const char	*next;
+
+	if (str == NULL)
+		return (NULL);
+	ret = (char**)malloc(sizeof(char*) * (ft_str_splits(str, c) + 1));
+	if (ret == NULL)
+		return (NULL);
+	i = 0;
+	while (*str != '\0')
+	{
+		str = ft_str_find_next(str, c, 1);
+		if (*str != '\0')
+		{
+			next = ft_str_find_next(str, c, 0);
+			ret[i] = ft_strsub(str, 0, next - str);
+			if (ret[i] == NULL)
+				return (ft_table_del(ret, i));
+			i++;
+			str = next;
+		}
+	}
+	ret[i] = 0;
+	return (ret);
 }
