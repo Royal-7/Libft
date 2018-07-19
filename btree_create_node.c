@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   btree_create_node.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 18:53:08 by abao              #+#    #+#             */
-/*   Updated: 2018/07/18 13:35:35 by abao             ###   ########.fr       */
+/*   Created: 2018/07/18 14:13:04 by abao              #+#    #+#             */
+/*   Updated: 2018/07/18 14:13:19 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	*ft_memchr(const void *s, int c, size_t n)
+t_btree	*btree_create_node(void *item)
 {
-	size_t			i;
-	unsigned char	*str;
-	unsigned char	d;
+	t_btree *tree;
 
-	d = (unsigned char)c;
-	i = 0;
-	str = (unsigned char*)s;
-	if (!s)
-		return (NULL);
-	str = (unsigned char*)s;
-	while (str[i] != d && i < (n - 1))
-		i++;
-	if (str[i] == d && n != 0)
-		return (str += i);
-	return (NULL);
+	tree = (t_btree*)malloc(sizeof(t_btree));
+	tree->item = item;
+	tree->left = NULL;
+	tree->right = NULL;
+	return (tree);
 }

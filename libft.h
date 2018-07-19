@@ -6,7 +6,7 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 10:41:11 by abao              #+#    #+#             */
-/*   Updated: 2018/07/17 15:58:47 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/18 14:19:32 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,20 @@ typedef	struct	s_list
 	struct s_list	*next;
 }				t_list;
 
+typedef struct	s_btree
+{
+	struct s_btree	*left;
+	struct s_btree	*right;
+	void			*item;
+}				t_btree;
+
+t_btree			*btree_create_node(void *item);
+void			*btree_search_item(t_btree *root,
+		void *data_ref, int (*cmpf) (void *, void *));
+void			btree_apply_prefix(t_btree *root, void (*applyf) (void *));
+void			btree_apply_suffix(t_btree *root, void (*applyf) (void *));
+void			btree_apply_infix(t_btree *root, void (*applyf) (void *));
+int				btree_level_count(t_btree *root);
 size_t			ft_strlen(const char *s);
 char			*ft_strdup(const char *s1);
 char			*ft_strcpy(char *s1, const char *s2);

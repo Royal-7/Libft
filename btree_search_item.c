@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   btree_search_item.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 18:53:08 by abao              #+#    #+#             */
-/*   Updated: 2018/07/18 13:35:35 by abao             ###   ########.fr       */
+/*   Created: 2018/07/18 14:12:03 by abao              #+#    #+#             */
+/*   Updated: 2018/07/18 14:12:49 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*btree_search_item(t_btree *root,
+		void *data_ref, int (*cmpf) (void *, void *))
 {
-	size_t			i;
-	unsigned char	*str;
-	unsigned char	d;
+	t_btree	*tree;
 
-	d = (unsigned char)c;
-	i = 0;
-	str = (unsigned char*)s;
-	if (!s)
-		return (NULL);
-	str = (unsigned char*)s;
-	while (str[i] != d && i < (n - 1))
-		i++;
-	if (str[i] == d && n != 0)
-		return (str += i);
-	return (NULL);
+	tree = root;
+	btree_search_item(tree->left, data_ref, cmpf);
+	if ((*cmpf)(tree->item, data_ref) = 0)
+		return (tree);
+	btree_search_item(tree->right, data_ref, cmpf);
+	return (tree);
 }

@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   btree_level_count.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 18:53:08 by abao              #+#    #+#             */
-/*   Updated: 2018/07/18 13:35:35 by abao             ###   ########.fr       */
+/*   Created: 2018/07/18 14:15:46 by abao              #+#    #+#             */
+/*   Updated: 2018/07/18 14:16:01 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	btree_level_count(t_btree *root)
 {
-	size_t			i;
-	unsigned char	*str;
-	unsigned char	d;
+	t_btree	*tree;
+	int		countl;
+	int		countr;
 
-	d = (unsigned char)c;
-	i = 0;
-	str = (unsigned char*)s;
-	if (!s)
-		return (NULL);
-	str = (unsigned char*)s;
-	while (str[i] != d && i < (n - 1))
-		i++;
-	if (str[i] == d && n != 0)
-		return (str += i);
-	return (NULL);
+	tree = root;
+	countl = 0;
+	countr = 0;
+	while (tree)
+	{
+		countl = btree_level_count(tree->left) + 1;
+		countr = btree_level_count(tree->right) + 1;
+	}
+	if (countl >= countr)
+		return (countl);
+	return (countr);
 }

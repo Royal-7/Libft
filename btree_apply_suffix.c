@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   btree_apply_suffix.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 18:53:08 by abao              #+#    #+#             */
-/*   Updated: 2018/07/18 13:35:35 by abao             ###   ########.fr       */
+/*   Created: 2018/07/18 14:16:24 by abao              #+#    #+#             */
+/*   Updated: 2018/07/18 14:16:38 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	btree_apply_suffix(t_btree *root, void (*applyf) (void *))
 {
-	size_t			i;
-	unsigned char	*str;
-	unsigned char	d;
+	t_btree	*tree;
 
-	d = (unsigned char)c;
-	i = 0;
-	str = (unsigned char*)s;
-	if (!s)
-		return (NULL);
-	str = (unsigned char*)s;
-	while (str[i] != d && i < (n - 1))
-		i++;
-	if (str[i] == d && n != 0)
-		return (str += i);
-	return (NULL);
+	tree = root;
+	if (root->item == 0)
+		return ;
+	btree_apply_prefix(tree->left);
+	btree_apply_prefix(tree->right);
+	(*applyf)(tree->item);
 }
