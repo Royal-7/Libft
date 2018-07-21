@@ -6,9 +6,16 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 15:32:52 by abao              #+#    #+#             */
-/*   Updated: 2018/07/17 15:50:24 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/20 14:29:40 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** This function iterates through a list and applies a function to each link.
+** Uses malloc to create a new link. Ends when the content given is null.
+** Param: list with pointer to first item, and function.
+** Return: new list.
+*/
 
 #include "libft.h"
 #include <stdlib.h>

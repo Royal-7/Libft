@@ -6,7 +6,7 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 14:16:24 by abao              #+#    #+#             */
-/*   Updated: 2018/07/18 14:16:38 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/21 13:47:04 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	btree_apply_suffix(t_btree *root, void (*applyf) (void *))
 	t_btree	*tree;
 
 	tree = root;
-	if (root->item == 0)
+	if (!root || root->item == 0)
 		return ;
-	btree_apply_prefix(tree->left);
-	btree_apply_prefix(tree->right);
+	btree_apply_suffix(tree->left, applyf);
+	btree_apply_suffix(tree->right, applyf);
 	(*applyf)(tree->item);
 }

@@ -6,9 +6,14 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 14:38:43 by abao              #+#    #+#             */
-/*   Updated: 2018/07/13 14:43:03 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/20 13:31:14 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** This function creates a new node at the beginning of the list. No return.
+** Param: the original list, content of the new node to be added
+*/
 
 #include "libft.h"
 

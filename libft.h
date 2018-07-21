@@ -6,7 +6,7 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 10:41:11 by abao              #+#    #+#             */
-/*   Updated: 2018/07/18 14:19:32 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/20 19:15:45 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char			*ft_strcpy(char *s1, const char *s2);
 char			*ft_strncpy(char *s1, const char *s2, size_t n);
 char			*ft_strcat(char *s1, const char *s2);
 char			*ft_strncat(char *str1, const char *str2, size_t n);
-size_t			ft_strlcat(char	*dst, const char *src, size_t size);
+size_t			ft_strlcat(char	*restrict dst, const char *restrict src, size_t size);
 char			*ft_strchr(const char *s, int c);
 char			*ft_strrchr(const char *s, int c);
 char			*ft_strstr(const char *s1, const char *s2);

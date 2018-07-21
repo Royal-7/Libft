@@ -6,9 +6,15 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 13:39:39 by abao              #+#    #+#             */
-/*   Updated: 2018/07/15 19:28:43 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/20 13:42:55 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** This function deletes the memory of the link using the function given.
+** the memory is then freed and the pointer is set to NULL. 
+** Param: Link to be deleted, the function to use to delete.
+*/
 
 #include "libft.h"
 #include <stdlib.h>

@@ -6,9 +6,14 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 14:52:07 by abao              #+#    #+#             */
-/*   Updated: 2018/07/15 19:41:25 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/20 14:07:40 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** Iterates through given list with function.
+** Param: list to have function applied to, function to apply
+*/
 
 #include "libft.h"
 

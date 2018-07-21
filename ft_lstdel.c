@@ -6,9 +6,14 @@
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/13 14:15:13 by abao              #+#    #+#             */
-/*   Updated: 2018/07/15 19:28:14 by abao             ###   ########.fr       */
+/*   Updated: 2018/07/20 13:49:03 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+/*
+** Similar to lstdelone, but deletes every item on the list 
+** that comes after the given one. 
+*/
 
 #include "libft.h"
 

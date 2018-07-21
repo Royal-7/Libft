@@ -5,36 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: abao <marvin@42.fr>                        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/09 13:04:00 by abao              #+#    #+#             */
-/*   Updated: 2018/07/17 12:52:53 by abao             ###   ########.fr       */
+/*   Created: 2018/07/20 19:50:50 by abao              #+#    #+#             */
+/*   Updated: 2018/07/20 20:59:08 by abao             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+/*
+** This function converts an argument into an integer. Start by trimming white space.
+** Then, *10, take the char and cast, - '0'
+** Param: string to convert.
+** Return: converted int, or 0 if not an int.
+*/
+
+#include "libft.h"
+
+int	ft_atoi(const char *str)
 {
-	int				i;
-	long long int	result;
+	int				c;
+	long long int	new;
 	long long int	neg;
 
-	i = 0;
+	c = 0;
+	new = 0;
 	neg = 1;
-	result = 0;
-	while (str[i] == 32 || str[i] == 10 || str[i] == 9 || str[i] == 12 ||
-			str[i] == 13 || str[i] == 11)
-		i++;
-	if (str[i] == '-' || str[i] == '+')
+
+	while (str[c] == '\n' || str[c] == '\v' || str[c] == '\t' ||
+			str[c] == '\f' || str[c] == '\r' || str[c] == ' ')
+		c++;
+	if (str[c] == '-')
 	{
-		if (str[i] == '-')
-			neg = -1;
-		i++;
+		neg = -1;
+		c++;
 	}
-	while (str[i])
+	while (str[c] >= '0' && str[c] <= '9')
 	{
-		if (str[i] < 48 || 57 < str[i])
-			return (result * neg);
-		else
-			result = (result * 10) + (long long int)(str[i] - '0');
-		i++;
+		new *= 10;
+		new = new + ((long long int)str[c] - '0');
+		c++;
 	}
-	return (result * neg);
+	new = new * neg;
+	return (new);
 }
